@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Lostinvlg\FilterCollection;
 
+/**
+ * @template-implements \IteratorAggregate<Filter>
+ */
 final class FilterBag implements \Countable, \IteratorAggregate, \JsonSerializable
 {
     private array $items = [];
@@ -15,7 +18,7 @@ final class FilterBag implements \Countable, \IteratorAggregate, \JsonSerializab
 
     public function getIterator(): \Traversable
     {
-        return new \ArrayIterator($this->items);
+        return new \ArrayIterator(\array_values($this->items));
     }
 
     /**
