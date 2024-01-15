@@ -13,15 +13,18 @@ class FilterCollection implements \JsonSerializable
 
     private NormalizerFactory $normalizerFactory;
 
+    private FilterBag $validFilters;
+
     public function __construct(private FilterBag $filters)
     {
         $this->validatorFactory = new ValidatorFactory();
         $this->normalizerFactory = new NormalizerFactory();
+        $this->validFilters = new FilterBag();
     }
 
     public function getFilters(): FilterBag
     {
-        return $this->filters;
+        return $this->validFilters;
     }
 
     public function parse(array $query): self
@@ -44,7 +47,8 @@ class FilterCollection implements \JsonSerializable
             }
             $value = $normalizer->normalize($query[$filter->name]);
             if ($validator->validate($value)) {
-                $filter->setFiltered(\is_array($value) ? $value : [$value]);
+                $valid = (clone $filter)->setFiltered(\is_array($value) ? $value : [$value]);
+                $this->validFilters->add($valid);
             }
         }
         unset($validators, $normalizers);
@@ -54,6 +58,6 @@ class FilterCollection implements \JsonSerializable
 
     public function jsonSerialize(): FilterBag
     {
-        return $this->filters;
+        return $this->validFilters;
     }
 }
