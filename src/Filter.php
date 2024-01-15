@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lostinvlg\FilterCollection;
 
-final class Filter implements \JsonSerializable
+class Filter implements \JsonSerializable
 {
     /**
      * All filter values (e.g. for build form).

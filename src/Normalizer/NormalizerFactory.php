@@ -6,7 +6,7 @@ namespace Lostinvlg\FilterCollection\Normalizer;
 
 use Lostinvlg\FilterCollection\FilterType;
 
-final class NormalizerFactory
+class NormalizerFactory
 {
     public function make(FilterType $type): NormalizerInterface
     {

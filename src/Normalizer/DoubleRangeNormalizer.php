@@ -6,7 +6,7 @@ namespace Lostinvlg\FilterCollection\Normalizer;
 
 use Lostinvlg\FilterCollection\Delimiter;
 
-final class DoubleRangeNormalizer implements NormalizerInterface
+class DoubleRangeNormalizer implements NormalizerInterface
 {
     public function normalize(mixed $value): array
     {

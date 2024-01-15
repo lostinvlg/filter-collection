@@ -6,7 +6,7 @@ namespace Lostinvlg\FilterCollection\Normalizer;
 
 use Lostinvlg\FilterCollection\Delimiter;
 
-final class MultiIntegerNormalizer implements NormalizerInterface
+class MultiIntegerNormalizer implements NormalizerInterface
 {
     public function normalize(mixed $value): array
     {

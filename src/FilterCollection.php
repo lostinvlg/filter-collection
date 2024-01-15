@@ -7,7 +7,7 @@ namespace Lostinvlg\FilterCollection;
 use Lostinvlg\FilterCollection\Normalizer\NormalizerFactory;
 use Lostinvlg\FilterCollection\Validator\ValidatorFactory;
 
-final class FilterCollection implements \JsonSerializable
+class FilterCollection implements \JsonSerializable
 {
     private ValidatorFactory $validatorFactory;
 

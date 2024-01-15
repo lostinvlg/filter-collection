@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lostinvlg\FilterCollection\Normalizer;
 
-final class SingleIntegerNormalizer implements NormalizerInterface
+class SingleIntegerNormalizer implements NormalizerInterface
 {
     public function normalize(mixed $value): int
     {

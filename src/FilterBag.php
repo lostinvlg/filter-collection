@@ -7,7 +7,7 @@ namespace Lostinvlg\FilterCollection;
 /**
  * @template-implements \IteratorAggregate<Filter>
  */
-final class FilterBag implements \Countable, \IteratorAggregate, \JsonSerializable
+class FilterBag implements \Countable, \IteratorAggregate, \JsonSerializable
 {
     private array $items = [];
 

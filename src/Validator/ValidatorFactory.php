@@ -8,7 +8,7 @@ use Lostinvlg\FilterCollection\Filter;
 use Lostinvlg\FilterCollection\FilterType;
 use Lostinvlg\FilterCollection\FilterValue;
 
-final class ValidatorFactory
+class ValidatorFactory
 {
     public function make(Filter $filter): ValidatorInterface
     {

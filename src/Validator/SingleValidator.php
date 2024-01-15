@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lostinvlg\FilterCollection\Validator;
 
-final class SingleValidator implements ValidatorInterface
+class SingleValidator implements ValidatorInterface
 {
     public function __construct(private array $rules)
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lostinvlg\FilterCollection\Validator;
 
-final class BooleanValidator implements ValidatorInterface
+class BooleanValidator implements ValidatorInterface
 {
     public function validate(mixed $value): bool
     {
