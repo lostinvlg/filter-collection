@@ -18,10 +18,11 @@
         "php": "^8.2"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.46"
+        "friendsofphp/php-cs-fixer": "^3.46",
+        "phpunit/phpunit": "^10.5"
     },
     "scripts": {
         "fix": "PHP_CS_FIXER_IGNORE_ENV=1 php vendor/bin/php-cs-fixer fix src  --verbose --using-cache no",
-        "tests": "./bin/phpunit"
+        "tests": "php vendor/bin/phpunit"
     }
 }

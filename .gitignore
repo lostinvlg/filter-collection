@@ -2,3 +2,8 @@
 
 # php-cs-fixer
 .php-cs-fixer.cache
+
+# phpunit
+/phpunit.xml
+phpunit.result.cache
+/test-coverage
