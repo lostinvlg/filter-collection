@@ -1,0 +1,27 @@
+{
+    "name": "lostinvlg/filter-collection",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lostinvlg\\FilterCollection\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Viktor Chukleev",
+            "email": "lostinvlg@yandex.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.46"
+    },
+    "scripts": {
+        "fix": "PHP_CS_FIXER_IGNORE_ENV=1 php vendor/bin/php-cs-fixer fix src  --verbose --using-cache no",
+        "tests": "./bin/phpunit"
+    }
+}
