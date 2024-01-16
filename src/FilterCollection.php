@@ -52,8 +52,8 @@ class FilterCollection
             }
             $value = $normalizer->normalize($query[$filter->name]);
             if ($validator->validate($value)) {
-                $valid = (clone $filter)->setFiltered(\is_array($value) ? $value : [$value]);
-                $this->validFilters->add($valid);
+                $filter->setFiltered(\is_array($value) ? $value : [$value]);
+                $this->validFilters->add(clone $filter);
             }
         }
         unset($validators, $normalizers);
