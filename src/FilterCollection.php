@@ -50,10 +50,13 @@ class FilterCollection
                 $validator = $this->validatorFactory->make($filter);
                 $validators[$filter->type->value] = $validator;
             }
-            $value = $normalizer->normalize($query[$filter->name]);
-            if ($validator->validate($value)) {
-                $filter->setFiltered(\is_array($value) ? $value : [$value]);
-                $this->validFilters->add(clone $filter);
+            try {
+                $value = $normalizer->normalize($query[$filter->name]);
+                if ($validator->validate($value)) {
+                    $filter->setFiltered(\is_array($value) ? $value : [$value]);
+                    $this->validFilters->add(clone $filter);
+                }
+            } catch (\InvalidArgumentException) {
             }
         }
         unset($validators, $normalizers);
