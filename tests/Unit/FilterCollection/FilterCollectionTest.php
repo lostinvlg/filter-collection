@@ -17,10 +17,7 @@ final class FilterCollectionTest extends TestCase
     {
         $filterCollection = new FilterCollection($this->createAllowedFilters());
         $filterCollection->parse([]);
-        $this->assertCount(0, $filterCollection->getFilters());
-        foreach ($filterCollection->getFilters() as $filter) {
-            $this->assertEmpty($filter->getFiltered());
-        }
+        $this->assertCount(0, $filterCollection->getValidFilters());
     }
 
     public function testAllFilters(): void

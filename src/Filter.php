@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Lostinvlg\FilterCollection;
 
-class Filter implements \JsonSerializable
+class Filter implements \JsonSerializable, \Countable
 {
     /**
      * All filter values (e.g. for build form).
@@ -29,6 +29,11 @@ class Filter implements \JsonSerializable
         array $values = [],
     ) {
         $this->setValues($values);
+    }
+
+    public function count(): int
+    {
+        return \count($this->values);
     }
 
     public function addValue(FilterValue $value): self
