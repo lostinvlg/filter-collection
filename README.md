@@ -29,10 +29,11 @@ $bag
         new FilterValue(26, 'Gray'),
     ]));
 
-$filterCollection = new FilterCollection($bag); // json serializable
+$filterCollection = new FilterCollection($bag);
 $query = $request->query->all(); // $_GET
 $filterCollection->parse($query);
-$validatedFilters = $filterCollection->getFilters();
+$allFilters = $filterCollection->getFilters();
+$validFilters = $filterCollection->getValidFilters();
 ```
 
 Valid query string:

@@ -7,7 +7,7 @@ namespace Lostinvlg\FilterCollection;
 use Lostinvlg\FilterCollection\Normalizer\NormalizerFactory;
 use Lostinvlg\FilterCollection\Validator\ValidatorFactory;
 
-class FilterCollection implements \JsonSerializable
+class FilterCollection
 {
     private ValidatorFactory $validatorFactory;
 
@@ -23,6 +23,11 @@ class FilterCollection implements \JsonSerializable
     }
 
     public function getFilters(): FilterBag
+    {
+        return $this->filters;
+    }
+
+    public function getValidFilters(): FilterBag
     {
         return $this->validFilters;
     }
@@ -54,10 +59,5 @@ class FilterCollection implements \JsonSerializable
         unset($validators, $normalizers);
 
         return $this;
-    }
-
-    public function jsonSerialize(): FilterBag
-    {
-        return $this->validFilters;
     }
 }
