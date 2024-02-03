@@ -12,6 +12,9 @@ class DoubleRangeNormalizer implements NormalizerInterface
     {
         if (\is_string($value)) {
             $value = \explode(Delimiter::RANGE->value, $value);
+            if (1 === \count($value)) {
+                $value[1] = 0.0;
+            }
         } elseif (!\is_array($value)) {
             throw new \InvalidArgumentException('Invalid range value passed.');
         }
@@ -19,6 +22,6 @@ class DoubleRangeNormalizer implements NormalizerInterface
             throw new \InvalidArgumentException('Invalid range values passed.');
         }
 
-        return array_map('floatval', $value);
+        return \array_map('floatval', \array_values($value));
     }
 }

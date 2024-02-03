@@ -30,6 +30,9 @@ final class RangeValidatorTest extends TestCase
         $this->assertFalse($validator->validate([101, 201]));
         $this->assertFalse($validator->validate([1, 300]));
         $this->assertFalse($validator->validate([160, 150]));
+        $this->assertFalse($validator->validate([1, 0]));
+        $this->assertFalse($validator->validate([0, 201]));
+        $this->assertFalse($validator->validate([99, 0]));
     }
 
     public function testValidValues(): void
@@ -39,5 +42,7 @@ final class RangeValidatorTest extends TestCase
         $this->assertTrue($validator->validate([100, 200]));
         $this->assertTrue($validator->validate([101, 199]));
         $this->assertTrue($validator->validate([150, 150]));
+        $this->assertTrue($validator->validate([0, 200]));
+        $this->assertTrue($validator->validate([100, 0]));
     }
 }

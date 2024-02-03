@@ -41,8 +41,16 @@ final class DoubleRangeNormalizerTest extends TestCase
         $this->assertSame(100.0, $min);
         $this->assertSame(200.0, $max);
 
-        [$min2, $max2] = $normalizer->normalize(['100', '300']);
+        [$min, $max] = $normalizer->normalize('100');
+        $this->assertSame(100.0, $min);
+        $this->assertSame(0.0, $max);
+
+        [$min, $max] = $normalizer->normalize(';200');
+        $this->assertSame(0.0, $min);
+        $this->assertSame(200.0, $max);
+
+        [$min2, $max2] = $normalizer->normalize(['100', '200']);
         $this->assertSame(100.0, $min2);
-        $this->assertSame(300.0, $max2);
+        $this->assertSame(200.0, $max2);
     }
 }

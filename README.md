@@ -40,3 +40,11 @@ Valid query string:
 ```
 price=1000;2000&in-stock=1&brand=20&model=110,120,&color=25,26
 ```
+
+Range query string can contain zeros:
+```
+price=1000   // from 1000
+price=0;2000 // from 0 to 2000
+price=;2000  // from 0 to 2000
+price=1000;0 // from 1000
+```
