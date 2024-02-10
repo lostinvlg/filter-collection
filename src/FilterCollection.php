@@ -34,7 +34,6 @@ class FilterCollection
 
     public function parse(array $query): self
     {
-        $validators = [];
         $normalizers = [];
         foreach ($this->filters as $filter) {
             if (!isset($query[$filter->name])) {
@@ -45,11 +44,7 @@ class FilterCollection
                 $normalizer = $this->normalizerFactory->make($filter->type);
                 $normalizers[$filter->type->value] = $normalizer;
             }
-            $validator = $validators[$filter->type->value] ?? null;
-            if (null === $validator) {
-                $validator = $this->validatorFactory->make($filter);
-                $validators[$filter->type->value] = $validator;
-            }
+            $validator = $this->validatorFactory->make($filter);
             try {
                 $value = $normalizer->normalize($query[$filter->name]);
                 if ($validator->validate($value)) {
@@ -59,7 +54,7 @@ class FilterCollection
             } catch (\InvalidArgumentException) {
             }
         }
-        unset($validators, $normalizers);
+        unset($normalizers);
 
         return $this;
     }

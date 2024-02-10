@@ -28,14 +28,19 @@ final class FilterCollectionTest extends TestCase
             'price' => '101;2999',
             'stock' => '1',
             'brand' => '1',
+            'diagonal' => '42',
             'model' => '10,11',
             'color' => '36',
         ];
+        $totalFilters = \count($query);
+        $totalValidFilters = 0;
         $filterCollection->parse($query);
-        foreach ($filterCollection->getFilters() as $filter) {
+        foreach ($filterCollection->getValidFilters() as $filter) {
             $this->assertNotEmpty($filter->getValues());
             $this->assertIsArray($filter->jsonSerialize());
+            $totalValidFilters++;
         }
+        $this->assertEquals($totalFilters, $totalValidFilters);
     }
 
     public function testSerialization(): void
@@ -71,6 +76,11 @@ final class FilterCollectionTest extends TestCase
             ->add(new Filter(FilterType::COLOR, 'color', 'Цвет', '', '', [
                 new FilterValue(35, 'Белый'),
                 new FilterValue(36, 'Черный'),
+            ]))
+            ->add(new Filter(FilterType::SINGLE, 'diagonal', 'Диагональ', '', '', [
+                new FilterValue(41, '21'),
+                new FilterValue(42, '24'),
+                new FilterValue(43, '25'),
             ]));
 
         return $bag;
